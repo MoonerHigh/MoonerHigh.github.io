@@ -12,8 +12,14 @@
         <pubDate>Fri, 10 Feb 2023 22:32:46 +0800</pubDate>
         
         <guid>https://MoonerHigh.github.io/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3tcp%E5%8D%8F%E8%AE%AE/</guid>
-        <description>&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+        <description>&lt;blockquote&gt;
+&lt;p&gt;💡 TCP/IP（Transmission Control Protocol/Internet Protocol，传输控制协议/网际协议）是指能够在多个不同网络间实现信息传输的协议簇。TCP/IP协议不仅仅指的是&lt;a class=&#34;link&#34; href=&#34;https://baike.baidu.com/item/TCP/33012?fromModule=lemma_inlink&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;TCP&lt;/a&gt; 和&lt;a class=&#34;link&#34; href=&#34;https://baike.baidu.com/item/IP/224599?fromModule=lemma_inlink&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;IP&lt;/a&gt;两个协议，而是指一个由&lt;a class=&#34;link&#34; href=&#34;https://baike.baidu.com/item/FTP/13839?fromModule=lemma_inlink&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;FTP&lt;/a&gt;、&lt;a class=&#34;link&#34; href=&#34;https://baike.baidu.com/item/SMTP/175887?fromModule=lemma_inlink&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SMTP&lt;/a&gt;、TCP、&lt;a class=&#34;link&#34; href=&#34;https://baike.baidu.com/item/UDP/571511?fromModule=lemma_inlink&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;UDP&lt;/a&gt;、IP等协议构成的协议簇， 只是因为在TCP/IP协议中TCP协议和IP协议最具代表性，所以被称为TCP/IP协议。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;tcpip分层管理&#34;&gt;TCP/IP分层管理&lt;/h3&gt;
 &lt;p&gt;TCP/IP协议族按层次分可以分为以下四层。&lt;/p&gt;
 &lt;blockquote&gt;
