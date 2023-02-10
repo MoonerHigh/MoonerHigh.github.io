@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='SQL优化 查询SQL尽量不要使用select *，而是使用具体字段
-select * 进行查询时，很可能不会用到索引，避免造成全表扫描 节省资源，减少网络开销 避免在where子句中使用or来连接条件
-反例 1 select * from employee where id = 1 or salary = 3000; 正例 使用union all
-1 2 3 select * from employee where id=1 union all select * from employee where salary = 3000; 分开两条SQL写
-1 2 select * from employee where id=1; select * from employee where salary=3000; '>
-<title>SQL优化</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='快速了解TCP/IP协议'>
+<title>快速了解TCP协议</title>
 
-<link rel='canonical' href='https://MoonerHigh.github.io/p/sql%E4%BC%98%E5%8C%96/'>
+<link rel='canonical' href='https://MoonerHigh.github.io/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3tcp%E5%8D%8F%E8%AE%AE/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='SQL优化'>
-<meta property='og:description' content='SQL优化 查询SQL尽量不要使用select *，而是使用具体字段
-select * 进行查询时，很可能不会用到索引，避免造成全表扫描 节省资源，减少网络开销 避免在where子句中使用or来连接条件
-反例 1 select * from employee where id = 1 or salary = 3000; 正例 使用union all
-1 2 3 select * from employee where id=1 union all select * from employee where salary = 3000; 分开两条SQL写
-1 2 select * from employee where id=1; select * from employee where salary=3000; '>
-<meta property='og:url' content='https://MoonerHigh.github.io/p/sql%E4%BC%98%E5%8C%96/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='快速了解TCP协议'>
+<meta property='og:description' content='快速了解TCP/IP协议'>
+<meta property='og:url' content='https://MoonerHigh.github.io/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3tcp%E5%8D%8F%E8%AE%AE/'>
 <meta property='og:site_name' content='我的精神家园'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='MySQL' /><meta property='article:published_time' content='2023-01-13T10:48:35&#43;08:00'/><meta property='article:modified_time' content='2023-01-13T10:48:35&#43;08:00'/>
-<meta name="twitter:title" content="SQL优化">
-<meta name="twitter:description" content="SQL优化 查询SQL尽量不要使用select *，而是使用具体字段
-select * 进行查询时，很可能不会用到索引，避免造成全表扫描 节省资源，减少网络开销 避免在where子句中使用or来连接条件
-反例 1 select * from employee where id = 1 or salary = 3000; 正例 使用union all
-1 2 3 select * from employee where id=1 union all select * from employee where salary = 3000; 分开两条SQL写
-1 2 select * from employee where id=1; select * from employee where salary=3000; ">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='network' /><meta property='article:published_time' content='2023-02-10T22:32:46&#43;08:00'/><meta property='article:modified_time' content='2023-02-10T22:32:46&#43;08:00'/>
+<meta name="twitter:title" content="快速了解TCP协议">
+<meta name="twitter:description" content="快速了解TCP/IP协议">
     </head>
     <body class="
     article-page
@@ -222,7 +210,45 @@ select * 进行查询时，很可能不会用到索引，避免造成全表扫�
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#tcpip分层管理">TCP/IP分层管理</a></li>
+        <li><a href="#tcpip通信传输流">TCP/IP通信传输流</a></li>
+        <li><a href="#tcp三次握手">TCP三次握手</a></li>
+        <li><a href="#tcp的释放-四次挥手">TCP的释放-四次挥手</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -241,9 +267,13 @@ select * 进行查询时，很可能不会用到索引，避免造成全表扫�
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/sql%E4%BC%98%E5%8C%96/">SQL优化</a>
+            <a href="/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3tcp%E5%8D%8F%E8%AE%AE/">快速了解TCP协议</a>
         </h2>
     
+        
+        <h3 class="article-subtitle">
+            快速了解TCP/IP协议
+        </h3>
         
     </div>
 
@@ -263,7 +293,7 @@ select * 进行查询时，很可能不会用到索引，避免造成全表扫�
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jan 13, 2023</time>
+                <time class="article-time--published">Feb 10, 2023</time>
             </div>
         
 
@@ -293,57 +323,79 @@ select * 进行查询时，很可能不会用到索引，避免造成全表扫�
     <section class="article-content">
     
     
-    <h1 id="sql优化">SQL优化</h1>
-<ul>
-<li>
-<p>查询SQL尽量不要使用select *，而是使用具体字段</p>
-<ol>
-<li>select * 进行查询时，很可能不会用到索引，避免造成全表扫描</li>
-<li>节省资源，减少网络开销</li>
-</ol>
-</li>
-<li>
-<p>避免在where子句中使用<code>or</code>来连接条件</p>
-<ul>
-<li>反例</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3000</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>正例</li>
-</ul>
-<p>使用union all</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="o">=</span><span class="mi">1</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">union</span><span class="w"> </span><span class="k">all</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3000</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><p>分开两条SQL写</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">salary</span><span class="o">=</span><span class="mi">3000</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><!-- raw HTML omitted -->
+    <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
+<h3 id="tcpip分层管理">TCP/IP分层管理</h3>
+<p>TCP/IP协议族按层次分可以分为以下四层。</p>
+<blockquote>
+<p>应用层-传输层-网络层-数据链路层</p>
+</blockquote>
+<p>TCP/IP分层的好处是可以解耦，如果互联网只由一个协议统筹，某个地方需要改变设计时，需要把整体都替换掉，而分层之后只需要把变动的层替换掉即可。</p>
+<p><img src="https://pic.imgdb.cn/item/63e50b984757feff33ce609e.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="OSI-TCP_IP.jpeg"
+	
+	
+></p>
+<h3 id="tcpip通信传输流">TCP/IP通信传输流</h3>
+<p>利用TCP/IP协议簇进行通信时，会通过分层顺序与对方进行确认，下面我们用HTTP来举例说明一下。</p>
+<ol>
+<li>客户端作为发送端在应用层使用HTTP协议向某一个web页面发送请求。</li>
+<li>为了传输方便，在传输层(TCP协议)把从应用层接收到的数据（HTTP请求报文）进行分割，并在各个报文上打上标记序号及端口号后转发给网络层。</li>
+<li>在网络层（IP协议），增加作为通信地址的MAC地址然后转发给数据链路层。</li>
+</ol>
+<p>当接收端的服务器在链路层收到数据，按序往上层发送，一直到应用层，才算能真正接收到客户端发来的HTTP请求。</p>
+<p>发送端在层与层之间传输数据时，每经过一层必定会被打上该层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层必会把对应的首部消除。</p>
+<h3 id="tcp三次握手">TCP三次握手</h3>
+<blockquote>
+<p>最开始的时候客户端和服务端都是处于CLOSED状态，主动打开的是客户端，被动打开的是服务端。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/114bd9b53c554319ae0db15b57b472b8.gif#pic_center"
+	
+	
+	
+	loading="lazy"
+	
+		alt="https://img-blog.csdnimg.cn/114bd9b53c554319ae0db15b57b472b8.gif#pic_center"
+	
+	
+></p>
+<ol>
+<li>TCP服务器先创建传输控制块TCB，时刻准备接受客户进程的连接请求，此时服务器就进入了LISTEN状态;</li>
+<li>TCP客户进程也是先创建传输控制块TCB，然后向服务器发出连接请求报文，这是报文首部中的同步为SYN=1,同时选择一个初始序列号seq=x,此时客户端进程进入了SYN-SENT（同步到已发送）状态。TCP规定，SYN报文段（SYN=1的报文段）不能携带数据，但需要消耗掉一个序号。</li>
+<li>TCP服务器收到请求报文后，如果同意连接，则发出确认报文。确认报文中应该ACK=1,SYN=1,确认号是ack=x+1,同时也要初始化一个序列号seq=y，此时TCP服务器进程进入了SYN-RCVD状态。这个报文也不能携带数据，但是同样要消耗一个序号。</li>
+<li>TCP客户端收到确认后，还要向服务器给出确认。确认报文的ACK=1,ack=y+1,自己的序列号seq=x+1,此时TCP连接建立，客户端进入ESTABLISHED（已建立连接）状态。TCP规定，ACK报文段可以携带数据，但是如果不携带数据则不消耗信号。</li>
+<li>当服务器收到客户端的确认后也进入ESTABLISHED状态，此时双方就可以开始通信了。</li>
+</ol>
+<p><strong><strong>为什么TCP客户端最后还要发送一次确认呢？</strong></strong></p>
+<blockquote>
+<p>主要防止已经失效的连接请求报文突然又传送到了服务器，从而产生错误。</p>
+</blockquote>
+<h3 id="tcp的释放-四次挥手">TCP的释放-四次挥手</h3>
+<p><img src="https://img-blog.csdnimg.cn/0c17d72769aa4bd2b95bbaee1749b39d.gif#pic_center"
+	
+	
+	
+	loading="lazy"
+	
+		alt="https://img-blog.csdnimg.cn/0c17d72769aa4bd2b95bbaee1749b39d.gif#pic_center"
+	
+	
+></p>
+<blockquote>
+<p>数据传输完毕后，双方都可释放连接。最开始的时候，客户端和服务器都是处于ESTABLISHED状态，然后客户端主动关闭，服务器被动关闭。</p>
+</blockquote>
+<ul>
+<li>
+<p>参考资料</p>
+<p><a class="link" href="https://weread.qq.com/web/bookDetail/3da32b505dd9f43da9a1aca"  target="_blank" rel="noopener"
+    >图解HTTP-上野宣-微信读书</a></p>
+<p><a class="link" href="https://blog.csdn.net/qzcsu/article/details/72861891"  target="_blank" rel="noopener"
+    >两张动图-彻底明白TCP的三次握手与四次挥手_小书go的博客-CSDN博客_tcp三次握手</a></p>
 </li>
 </ul>
 
@@ -354,7 +406,7 @@ select * 进行查询时，很可能不会用到索引，避免造成全表扫�
     
     <section class="article-tags">
         
-            <a href="/tags/mysql/">MySQL</a>
+            <a href="/tags/network/">network</a>
         
     </section>
 
@@ -385,19 +437,6 @@ select * 进行查询时，很可能不会用到索引，避免造成全表扫�
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3tcp%E5%8D%8F%E8%AE%AE/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">快速了解TCP协议</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="">
@@ -433,6 +472,19 @@ select * 进行查询时，很可能不会用到索引，避免造成全表扫�
 
         <div class="article-details">
             <h2 class="article-title">逃逸分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/sql%E4%BC%98%E5%8C%96/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">SQL优化</h2>
         </div>
     </a>
 </article>

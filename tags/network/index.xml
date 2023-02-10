@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>network on 我的精神家园</title>
+        <link>https://MoonerHigh.github.io/tags/network/</link>
+        <description>Recent content in network on 我的精神家园</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 10 Feb 2023 22:32:46 +0800</lastBuildDate><atom:link href="https://MoonerHigh.github.io/tags/network/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>快速了解TCP协议</title>
+        <link>https://MoonerHigh.github.io/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3tcp%E5%8D%8F%E8%AE%AE/</link>
+        <pubDate>Fri, 10 Feb 2023 22:32:46 +0800</pubDate>
+        
+        <guid>https://MoonerHigh.github.io/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3tcp%E5%8D%8F%E8%AE%AE/</guid>
+        <description>&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id=&#34;tcpip分层管理&#34;&gt;TCP/IP分层管理&lt;/h3&gt;
+&lt;p&gt;TCP/IP协议族按层次分可以分为以下四层。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;应用层-传输层-网络层-数据链路层&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;TCP/IP分层的好处是可以解耦，如果互联网只由一个协议统筹，某个地方需要改变设计时，需要把整体都替换掉，而分层之后只需要把变动的层替换掉即可。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/63e50b984757feff33ce609e.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;OSI-TCP_IP.jpeg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;tcpip通信传输流&#34;&gt;TCP/IP通信传输流&lt;/h3&gt;
+&lt;p&gt;利用TCP/IP协议簇进行通信时，会通过分层顺序与对方进行确认，下面我们用HTTP来举例说明一下。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;客户端作为发送端在应用层使用HTTP协议向某一个web页面发送请求。&lt;/li&gt;
+&lt;li&gt;为了传输方便，在传输层(TCP协议)把从应用层接收到的数据（HTTP请求报文）进行分割，并在各个报文上打上标记序号及端口号后转发给网络层。&lt;/li&gt;
+&lt;li&gt;在网络层（IP协议），增加作为通信地址的MAC地址然后转发给数据链路层。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当接收端的服务器在链路层收到数据，按序往上层发送，一直到应用层，才算能真正接收到客户端发来的HTTP请求。&lt;/p&gt;
+&lt;p&gt;发送端在层与层之间传输数据时，每经过一层必定会被打上该层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层必会把对应的首部消除。&lt;/p&gt;
+&lt;h3 id=&#34;tcp三次握手&#34;&gt;TCP三次握手&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;最开始的时候客户端和服务端都是处于CLOSED状态，主动打开的是客户端，被动打开的是服务端。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/114bd9b53c554319ae0db15b57b472b8.gif#pic_center&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://img-blog.csdnimg.cn/114bd9b53c554319ae0db15b57b472b8.gif#pic_center&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;TCP服务器先创建传输控制块TCB，时刻准备接受客户进程的连接请求，此时服务器就进入了LISTEN状态;&lt;/li&gt;
+&lt;li&gt;TCP客户进程也是先创建传输控制块TCB，然后向服务器发出连接请求报文，这是报文首部中的同步为SYN=1,同时选择一个初始序列号seq=x,此时客户端进程进入了SYN-SENT（同步到已发送）状态。TCP规定，SYN报文段（SYN=1的报文段）不能携带数据，但需要消耗掉一个序号。&lt;/li&gt;
+&lt;li&gt;TCP服务器收到请求报文后，如果同意连接，则发出确认报文。确认报文中应该ACK=1,SYN=1,确认号是ack=x+1,同时也要初始化一个序列号seq=y，此时TCP服务器进程进入了SYN-RCVD状态。这个报文也不能携带数据，但是同样要消耗一个序号。&lt;/li&gt;
+&lt;li&gt;TCP客户端收到确认后，还要向服务器给出确认。确认报文的ACK=1,ack=y+1,自己的序列号seq=x+1,此时TCP连接建立，客户端进入ESTABLISHED（已建立连接）状态。TCP规定，ACK报文段可以携带数据，但是如果不携带数据则不消耗信号。&lt;/li&gt;
+&lt;li&gt;当服务器收到客户端的确认后也进入ESTABLISHED状态，此时双方就可以开始通信了。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;&lt;strong&gt;为什么TCP客户端最后还要发送一次确认呢？&lt;/strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;主要防止已经失效的连接请求报文突然又传送到了服务器，从而产生错误。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;tcp的释放-四次挥手&#34;&gt;TCP的释放-四次挥手&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/0c17d72769aa4bd2b95bbaee1749b39d.gif#pic_center&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://img-blog.csdnimg.cn/0c17d72769aa4bd2b95bbaee1749b39d.gif#pic_center&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据传输完毕后，双方都可释放连接。最开始的时候，客户端和服务器都是处于ESTABLISHED状态，然后客户端主动关闭，服务器被动关闭。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;参考资料&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://weread.qq.com/web/bookDetail/3da32b505dd9f43da9a1aca&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;图解HTTP-上野宣-微信读书&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qzcsu/article/details/72861891&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;两张动图-彻底明白TCP的三次握手与四次挥手_小书go的博客-CSDN博客_tcp三次握手&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
