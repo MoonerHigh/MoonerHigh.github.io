@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='快速了解TCP/IP协议'>
-<title>快速了解TCP协议</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='简明阐述CDN'>
+<title>快速了解CDN</title>
 
-<link rel='canonical' href='https://MoonerHigh.github.io/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3tcp%E5%8D%8F%E8%AE%AE/'>
+<link rel='canonical' href='https://MoonerHigh.github.io/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3cdn/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='快速了解TCP协议'>
-<meta property='og:description' content='快速了解TCP/IP协议'>
-<meta property='og:url' content='https://MoonerHigh.github.io/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3tcp%E5%8D%8F%E8%AE%AE/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='快速了解CDN'>
+<meta property='og:description' content='简明阐述CDN'>
+<meta property='og:url' content='https://MoonerHigh.github.io/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3cdn/'>
 <meta property='og:site_name' content='我的精神家园'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='network' /><meta property='article:published_time' content='2023-02-10T22:32:46&#43;08:00'/><meta property='article:modified_time' content='2023-02-10T22:32:46&#43;08:00'/>
-<meta name="twitter:title" content="快速了解TCP协议">
-<meta name="twitter:description" content="快速了解TCP/IP协议">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='network' /><meta property='article:published_time' content='2023-02-13T00:44:00&#43;08:00'/><meta property='article:modified_time' content='2023-02-13T00:44:00&#43;08:00'/>
+<meta name="twitter:title" content="快速了解CDN">
+<meta name="twitter:description" content="简明阐述CDN">
     </head>
     <body class="
     article-page
@@ -232,14 +232,8 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
-      <ol>
-        <li><a href="#tcpip分层管理">TCP/IP分层管理</a></li>
-        <li><a href="#tcpip通信传输流">TCP/IP通信传输流</a></li>
-        <li><a href="#tcp三次握手">TCP三次握手</a></li>
-        <li><a href="#tcp的释放-四次挥手">TCP的释放-四次挥手</a></li>
-      </ol>
-    </li>
+    <li><a href="#cdn的实现原理">CDN的实现原理</a></li>
+    <li><a href="#cdn解决了什么问题">CDN解决了什么问题？</a></li>
   </ol>
 </nav>
         </div>
@@ -267,12 +261,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3tcp%E5%8D%8F%E8%AE%AE/">快速了解TCP协议</a>
+            <a href="/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3cdn/">快速了解CDN</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            快速了解TCP/IP协议
+            简明阐述CDN
         </h3>
         
     </div>
@@ -293,7 +287,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Feb 10, 2023</time>
+                <time class="article-time--published">Feb 13, 2023</time>
             </div>
         
 
@@ -323,87 +317,31 @@
     <section class="article-content">
     
     
-    <blockquote>
-<p>💡 TCP/IP（Transmission Control Protocol/Internet Protocol，传输控制协议/网际协议）是指能够在多个不同网络间实现信息传输的协议簇。TCP/IP协议不仅仅指的是<a class="link" href="https://baike.baidu.com/item/TCP/33012?fromModule=lemma_inlink"  target="_blank" rel="noopener"
-    >TCP</a> 和<a class="link" href="https://baike.baidu.com/item/IP/224599?fromModule=lemma_inlink"  target="_blank" rel="noopener"
-    >IP</a>两个协议，而是指一个由<a class="link" href="https://baike.baidu.com/item/FTP/13839?fromModule=lemma_inlink"  target="_blank" rel="noopener"
-    >FTP</a>、<a class="link" href="https://baike.baidu.com/item/SMTP/175887?fromModule=lemma_inlink"  target="_blank" rel="noopener"
-    >SMTP</a>、TCP、<a class="link" href="https://baike.baidu.com/item/UDP/571511?fromModule=lemma_inlink"  target="_blank" rel="noopener"
-    >UDP</a>、IP等协议构成的协议簇， 只是因为在TCP/IP协议中TCP协议和IP协议最具代表性，所以被称为TCP/IP协议。</p>
-</blockquote>
-<h3 id="tcpip分层管理">TCP/IP分层管理</h3>
-<p>TCP/IP协议族按层次分可以分为以下四层。</p>
+    <p>CDN的全称为Content Delivery Network，即内容分发网络。其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输得更快、更稳定。通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络，CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。</p>
 <blockquote>
-<p>应用层-传输层-网络层-数据链路层</p>
+<p>简单来说，CDN通过在网络节点各处放置边缘机房，当用户请求时使用负载均衡技术使用户可以就近取得内容，从而解决网络拥挤的状况。</p>
 </blockquote>
-<p>TCP/IP分层的好处是可以解耦，如果互联网只由一个协议统筹，某个地方需要改变设计时，需要把整体都替换掉，而分层之后只需要把变动的层替换掉即可。</p>
-<p><img src="https://pic.imgdb.cn/item/63e50b984757feff33ce609e.jpg"
+<h2 id="cdn的实现原理">CDN的实现原理</h2>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><img src="https://pic.imgdb.cn/item/63e90c4f4757feff33c353a4.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="OSI-TCP_IP.jpeg"
+		alt="CDN.png"
 	
 	
 ></p>
-<h3 id="tcpip通信传输流">TCP/IP通信传输流</h3>
-<p>利用TCP/IP协议簇进行通信时，会通过分层顺序与对方进行确认，下面我们用HTTP来举例说明一下。</p>
+<p>当用户在浏览器中输入域名进行访问时，会被DNS服务器进行解析，域名在被解析之后，会指向CDN域名服务器，CDN域名服务器这个时候会返回域名的CNAME记录，然后再对CNAME记录进行解析，这个时候会访问负载均衡服务器得到缓存服务器的地址，最后再去对IP进行访问从而得到数据并返回数据给浏览器回显。</p>
+<h2 id="cdn解决了什么问题">CDN解决了什么问题？</h2>
 <ol>
-<li>客户端作为发送端在应用层使用HTTP协议向某一个web页面发送请求。</li>
-<li>为了传输方便，在传输层(TCP协议)把从应用层接收到的数据（HTTP请求报文）进行分割，并在各个报文上打上标记序号及端口号后转发给网络层。</li>
-<li>在网络层（IP协议），增加作为通信地址的MAC地址然后转发给数据链路层。</li>
+<li>使用大量边缘服务器通过负载均衡减少网络拥堵</li>
+<li>降低服务器带宽成本</li>
+<li>当源服务器宕机时，CDN缓存服务器可以提供服务</li>
+<li>压缩静态内容，从而提高访问速度</li>
 </ol>
-<p>当接收端的服务器在链路层收到数据，按序往上层发送，一直到应用层，才算能真正接收到客户端发来的HTTP请求。</p>
-<p>发送端在层与层之间传输数据时，每经过一层必定会被打上该层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层必会把对应的首部消除。</p>
-<h3 id="tcp三次握手">TCP三次握手</h3>
-<blockquote>
-<p>最开始的时候客户端和服务端都是处于CLOSED状态，主动打开的是客户端，被动打开的是服务端。</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/114bd9b53c554319ae0db15b57b472b8.gif#pic_center"
-	
-	
-	
-	loading="lazy"
-	
-		alt="https://img-blog.csdnimg.cn/114bd9b53c554319ae0db15b57b472b8.gif#pic_center"
-	
-	
-></p>
-<ol>
-<li>TCP服务器先创建传输控制块TCB，时刻准备接受客户进程的连接请求，此时服务器就进入了LISTEN状态;</li>
-<li>TCP客户进程也是先创建传输控制块TCB，然后向服务器发出连接请求报文，这是报文首部中的同步为SYN=1,同时选择一个初始序列号seq=x,此时客户端进程进入了SYN-SENT（同步到已发送）状态。TCP规定，SYN报文段（SYN=1的报文段）不能携带数据，但需要消耗掉一个序号。</li>
-<li>TCP服务器收到请求报文后，如果同意连接，则发出确认报文。确认报文中应该ACK=1,SYN=1,确认号是ack=x+1,同时也要初始化一个序列号seq=y，此时TCP服务器进程进入了SYN-RCVD状态。这个报文也不能携带数据，但是同样要消耗一个序号。</li>
-<li>TCP客户端收到确认后，还要向服务器给出确认。确认报文的ACK=1,ack=y+1,自己的序列号seq=x+1,此时TCP连接建立，客户端进入ESTABLISHED（已建立连接）状态。TCP规定，ACK报文段可以携带数据，但是如果不携带数据则不消耗信号。</li>
-<li>当服务器收到客户端的确认后也进入ESTABLISHED状态，此时双方就可以开始通信了。</li>
-</ol>
-<p><strong><strong>为什么TCP客户端最后还要发送一次确认呢？</strong></strong></p>
-<blockquote>
-<p>主要防止已经失效的连接请求报文突然又传送到了服务器，从而产生错误。</p>
-</blockquote>
-<h3 id="tcp的释放-四次挥手">TCP的释放-四次挥手</h3>
-<p><img src="https://img-blog.csdnimg.cn/0c17d72769aa4bd2b95bbaee1749b39d.gif#pic_center"
-	
-	
-	
-	loading="lazy"
-	
-		alt="https://img-blog.csdnimg.cn/0c17d72769aa4bd2b95bbaee1749b39d.gif#pic_center"
-	
-	
-></p>
-<blockquote>
-<p>数据传输完毕后，双方都可释放连接。最开始的时候，客户端和服务器都是处于ESTABLISHED状态，然后客户端主动关闭，服务器被动关闭。</p>
-</blockquote>
-<ul>
-<li>
-<p>参考资料</p>
-<p><a class="link" href="https://weread.qq.com/web/bookDetail/3da32b505dd9f43da9a1aca"  target="_blank" rel="noopener"
-    >图解HTTP-上野宣-微信读书</a></p>
-<p><a class="link" href="https://blog.csdn.net/qzcsu/article/details/72861891"  target="_blank" rel="noopener"
-    >两张动图-彻底明白TCP的三次握手与四次挥手_小书go的博客-CSDN博客_tcp三次握手</a></p>
-</li>
-</ul>
 
 </section>
 
@@ -446,12 +384,12 @@
             
                 
 <article class="">
-    <a href="/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3cdn/">
+    <a href="/p/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3tcp%E5%8D%8F%E8%AE%AE/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">快速了解CDN</h2>
+            <h2 class="article-title">快速了解TCP协议</h2>
         </div>
     </a>
 </article>
